@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Rating from 'react-rating';
-import { FaArrowCircleRight, FaRegStar, FaRegThumbsUp, FaStar } from 'react-icons/fa';
+import { FaArrowCircleRight, FaRegThumbsUp } from 'react-icons/fa';
 
 const ChefCard = ({ chef }) => {
     const { id, chef_name, img, experience, recipes, likes } = chef;
-    console.log(chef);
+    
     return (
         <div>
             <div className='shadow pt-4 rounded-lg'>
@@ -19,10 +18,10 @@ const ChefCard = ({ chef }) => {
                     </div>
                 </div>
                 <div className='bg-gray-200 flex justify-between items-center py-3 px-5 rounded-b-lg'>
-                    
-                        
-                        
-                        <Link className='flex justify-center items-center'>
+
+
+
+                    <Link className='flex justify-center items-center'>
                         <p className='cursor-pointer'><FaRegThumbsUp></FaRegThumbsUp></p>
                         <p>{likes} likes</p>
                     </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
   Bars3BottomRightIcon,
@@ -6,10 +6,12 @@ import {
   BriefcaseIcon
 } from '@heroicons/react/24/solid'
 import { FaCookieBite } from 'react-icons/fa';
+import { AuthContext } from '../providers/AuthProviders';
 
 
 
 const Header = () => {
+  const { user } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <div className='bg-gray-100 px-4 py-5 mx-auto md:px-24 lg:px-10 border z-10	'>
@@ -57,8 +59,13 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <div>
-            <button className='btn-solid'>Apply Now</button>
+        <div className='flex gap-1'>
+          <p>{user.displayName}</p>
+          {
+            user ? <button className='bg-red-700 text-white px-6 py-1 rounded'>Loout</button> : <Link to="/login">
+              <button className='bg-red-700 text-white px-6 py-1 rounded'>Login</button>
+            </Link>
+          }
         </div>
         {/* Mobile Navbar Section */}
         <div className='lg:hidden z-10'>
