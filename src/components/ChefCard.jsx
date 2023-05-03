@@ -1,32 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Rating from 'react-rating';
+import { FaArrowCircleRight, FaRegStar, FaStar } from 'react-icons/fa';
 
 const ChefCard = ({ chef }) => {
+    const { id, name, img, experience, recipes, likes } = chef;
     console.log(chef);
-    const { id, name, img, experience, recipes, rating } = chef;
-    console.log(id);
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl">
-                <figure className="px-10 pt-10">
-                    <img src={img} alt="Shoes" className="rounded-xl" />
-                </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">{name}</h2>
-                    <div className='text-left'>
-                        <li>Experience: {experience}</li>
-                        <li>No. of Recipes: {recipes}</li>
-                        <li>Rating: {rating.number}</li>
-                    </div>
-
-                    <div className="card-actions py-4">
-                        <button className='btn border-2 border-red-600 bg-transparent hover:bg-red-600 hover:border-red-600 text-black hover:text-white'>Explor Now</button>
-                        <Link to={`/details/${id}`}>
-                            <button className="btn btn-primary text-white">View Recipes</button>
-                        </Link>
+            <div className='shadow pt-4 rounded-lg'>
+                <img src={img} className='rounded w-5/6 m-auto' />
+                <div className='py-6'>
+                    <div className='text-center'>
+                        <h2 className="text-center text-2xl font-semibold">{name}</h2>
+                        <p>Experience: {experience}</p>
+                        <p>No. of Recipes: {recipes.length}</p>
 
                     </div>
                 </div>
+                <div className='bg-gray-200 flex justify-between items-center py-3 px-5 rounded-b-lg'>
+                    <div>
+                        <p>Total likes: {likes}</p></div>
+                    <Link to={`/details/${id}`} className='flex justify-center items-center'>
+                        <button className="mr-2">View Recipes </button><p className='cursor-pointer'><FaArrowCircleRight className='text-blue-700 -mb-1'></FaArrowCircleRight></p>
+                    </Link>
+                </div>
+
             </div>
         </div>
     );
