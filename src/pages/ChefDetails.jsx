@@ -34,7 +34,7 @@ const ChefDetails = () => {
             <div className='my-container grid grid-cols-3 gap-4 my-container py-3'>
                 {
                     recipes.map(recipe=><div>
-                        <ChefDetailsCard recipe={recipe}></ChefDetailsCard>
+                        <ChefDetailsCard recipe={recipe} key={recipe.index}></ChefDetailsCard>
                     </div>)
                 }
 

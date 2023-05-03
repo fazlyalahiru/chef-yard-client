@@ -19,7 +19,7 @@ const Home = () => {
             {
                 chefData.map(chef=>
                     <div >
-                        <ChefCard chef={chef}></ChefCard>
+                        <ChefCard chef={chef} key={chef.id}></ChefCard>
                     </div>
                 )
             }
