@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link,useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProviders';
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    console.log(from);
+    const handleSignIn = event => {
+        event.preventDefault();
+        signIn(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+                navigate(from, {replace: true})
+            })
+    }
+
     return (
         <div className=' grid grid-cols-3'>
             <div></div>
@@ -11,11 +29,11 @@ const Login = () => {
                     <form className='grid gap-3'>
 
                         <h4 className='text-2xl text-center font-semibold'>Please login</h4>
-                        
-                        <input type="email" name='email' placeholder="Your email" className="input input-bordered w-full block" />
-                        <input type="password" name='password' placeholder="Enter password" className="input input-bordered w-full block" />
-                        <button class="shadow bg-black hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="button">
-                            Sign Up
+
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' placeholder="Your email" className="input input-bordered w-full block" />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" name='password' placeholder="Enter password" className="input input-bordered w-full block" />
+                        <button onClick={handleSignIn} className="shadow bg-black hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="button">
+                            Sign In
                         </button>
                         <p>Don't have account?<Link className='ms-2 text-red-700 hover:text-black' to="/register">Register</Link></p>
                     </form>

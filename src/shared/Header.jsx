@@ -11,10 +11,21 @@ import { AuthContext } from '../providers/AuthProviders';
 
 
 const Header = () => {
-  const { user } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { updateProfile } = useContext(AuthContext)
+  // const profileImage = updateProfile();
+
+  const handleLogOut = () =>{
+    logout()
+    .then()
+    .catch(error=>{
+      console.log(error);
+    })
+  }
   return (
     <div className='bg-gray-100 px-4 py-5 mx-auto md:px-24 lg:px-10 border z-10	'>
+      
       <div className='relative flex items-center justify-between my-container'>
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>
@@ -60,9 +71,9 @@ const Header = () => {
           </li>
         </ul>
         <div className='flex gap-1'>
-          <p>{user.displayName}</p>
+          <p>{user?.displayName}</p>
           {
-            user ? <button className='bg-red-700 text-white px-6 py-1 rounded'>Loout</button> : <Link to="/login">
+            user ? <button onClick={handleLogOut} className='bg-red-700 text-white px-6 py-1 rounded'>Loout</button> : <Link to="/login">
               <button className='bg-red-700 text-white px-6 py-1 rounded'>Login</button>
             </Link>
           }

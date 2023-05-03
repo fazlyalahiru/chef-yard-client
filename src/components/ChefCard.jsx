@@ -26,7 +26,7 @@ const ChefCard = ({ chef }) => {
                         <p>{likes} likes</p>
                     </Link>
                     <Link to={`/details/${id}`} className='flex justify-center items-center'>
-                        <button className="mr-2">View Recipes </button><p className='cursor-pointer'><FaArrowCircleRight className='text-blue-700 -mb-1'></FaArrowCircleRight></p>
+                        <button className="mr-2">View Recipes </button><p className='cursor-pointer'><FaArrowCircleRight className='text-red-700 -mb-1'></FaArrowCircleRight></p>
                     </Link>
                 </div>
 

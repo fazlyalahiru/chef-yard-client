@@ -6,7 +6,6 @@ import ChefCard from '../components/ChefCard';
 
 const Home = () => {
     const chefData = useLoaderData()
-    console.log(chefData);
     return (
         <>
             <div className='banner-section text-center flex flex-col justify-center items-center md:py-1 py-12'>

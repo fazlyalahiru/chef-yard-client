@@ -7,7 +7,6 @@ const ChefDetails = () => {
     const { id } = useParams();
     const ChefDetails = useLoaderData();
     const { chef_name, img, likes, recipes, experierecipesnce, description } = ChefDetails;
-    console.log(ChefDetails);
     return (
         <>
             <div className='my-container flex items-center py-10 border shadow my-4 px-4 rounded'>
