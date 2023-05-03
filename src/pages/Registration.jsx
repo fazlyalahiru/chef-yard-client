@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
-import { updateProfile } from 'firebase/auth';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../firebase/firebase.config';
+const auth = getAuth(app)
 
 const Registration = () => {
     const { createUser } = useContext(AuthContext)
-
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,8 +16,8 @@ const Registration = () => {
 
     const handleRegister = event => {
         event.preventDefault();
-        
-        
+
+
         // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
         //     setError("password not valid need 8 char ");
         //     return;
@@ -24,17 +25,23 @@ const Registration = () => {
         //     setError("")
         // }
         createUser(email, password)
-        
+
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                updateProfile(name, photo)
+                updateProfile(auth.currentUser, {
+                    displayName: name, photoURL: photo
+                }).then(() => {
+                    console.log('profile updated');
+                }).catch((error) => {
+                    console.log(error);
+                });
             })
             .catch(error => {
                 console.log(error);
-            })           
+            })
     }
-  
+
     return (
         <div className=' grid grid-cols-3'>
             <div></div>
