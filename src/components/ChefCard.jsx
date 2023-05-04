@@ -17,9 +17,7 @@ const ChefCard = ({ chef }) => {
 
                     </div>
                 </div>
-                <div className='bg-gray-200 flex justify-between items-center py-3 px-5 rounded-b-lg'>
-
-
+                <div className='bg-slate-100 flex justify-between items-center py-3 px-5 rounded-b-lg'>
 
                     <Link className='flex justify-center items-center'>
                         <p className='cursor-pointer'><FaRegThumbsUp></FaRegThumbsUp></p>

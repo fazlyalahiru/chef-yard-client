@@ -15,14 +15,13 @@ const Registration = () => {
     const [password, setPassword] = useState("")
     const [photo, setPhoto] = useState("")
     const [error, setError] = useState("")
+    
+
 
     const handleRegister = event => {
         event.preventDefault();
-        
         createUser(email, password)
-
             .then(result => {
-
                 const createdUser = result.user;
                 console.log(createdUser);
                 setError("")
@@ -30,8 +29,9 @@ const Registration = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {
-                    
-                    return toast.success('User Created successfully');
+                    window.location.reload()
+                //    console.log(photoURL);
+                    return toast.success('User created successfully');
                 }).catch((error) => {
                     return toast.error({ error })
                 });
@@ -65,7 +65,7 @@ const Registration = () => {
             .catch(error => {
                 console.log(error);
                 setError(error.message)
-                
+
             })
     }
 

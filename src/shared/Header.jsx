@@ -8,6 +8,7 @@ import {
 import { FaCookieBite } from 'react-icons/fa';
 import { AuthContext } from '../providers/AuthProviders';
 import './Header.css'
+import { toast } from 'react-hot-toast';
 
 
 const Header = () => {
@@ -17,7 +18,9 @@ const Header = () => {
 
   const handleLogOut = () => {
     logout()
-      .then()
+    return toast.error("You are logged out")
+      .then((result)=>{
+      })
       .catch(error => {
         console.log(error);
       })

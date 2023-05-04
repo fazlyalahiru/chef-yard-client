@@ -3,5 +3,11 @@
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../assets/banner.jpg');
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.575), rgba(0, 0, 0, 0.521)), url('../assets/banner.jpg');
+}
+
+@media only screen and (max-width:632px){
+    .banner-section{
+        background-position: top center;
+    }
 }

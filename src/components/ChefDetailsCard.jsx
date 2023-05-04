@@ -30,7 +30,7 @@ const ChefDetailsCard = ({ recipe}) => {
                         }
                     </div>
                 </div>
-                <div className='bg-gray-200 flex justify-between items-center py-3 px-5 rounded-b-lg'>
+                <div className='bg-slate-100 flex justify-between items-center py-3 px-5 rounded-b-lg'>
                     <div className='flex justify-center items-center gap-1'>
                         <Rating className='text-danger'
                             placeholderRating={rating}

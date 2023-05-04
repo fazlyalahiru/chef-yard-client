@@ -1,5 +1,5 @@
 import React from 'react';
-import banner from '../assets/banner.jpg'
+import featured from '../../public/featured.jpg'
 import './Home.css'
 import { useLoaderData } from 'react-router-dom';
 import ChefCard from '../components/ChefCard';
@@ -15,14 +15,34 @@ const Home = () => {
                 <button className='btn border-2 border-white bg-transparent hover:bg-red-700 hover:border-red-700 text-white'>Explor Now</button>
 
             </div>
-            <div className='grid grid-cols-3 gap-4 my-container py-3'>
-            {
-                chefData.map(chef=>
-                    <div >
-                        <ChefCard chef={chef} key={chef.id}></ChefCard>
-                    </div>
-                )
-            }
+            <div className='text-center  my-container py-6 md:py-12 '>
+                <h4 className='text-2xl md:text-4xl font-bold py-6 uppercase'>Our Top <span className='text-red-700'>Chef</span></h4>
+                <div className='grid md:grid-cols-3 gap-4 py-3 mx-4 md:mx-1'>
+                    {
+                        chefData.map(chef =>
+                            <div >
+                                <ChefCard chef={chef} key={chef.id}></ChefCard>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+
+            <div className='py-6 md:py-12 grid md:grid-cols-3 bg-slate-100'>
+                <div class="my-container ">
+                    <img className='rounded' src={featured} alt="" />
+                </div>
+                <div class="md:col-span-2 ps-4 pr-4 md:pr-10 text-center md:text-left py-6">
+                    <h4 className='text-xl text-red-700'>Featured Dish</h4>
+                    <hr className='w-2/4 md:w-1/6  my-2 border mx-auto md:mx-0' />
+                    <h2 className='text-2xl md:text-4xl font-bold uppercase'>Lobster Tortellini</h2>
+                    <p className='py-4 text-justify md:text-left text-lg'>Lobster tortellini is a type of pasta dish that features small, stuffed pasta pouches filled with a mixture of lobster meat, cheese, and herbs. The tortellini is usually served in a rich and creamy sauce, which may include ingredients such as butter, garlic, cream, and Parmesan cheese. Lobster tortellini is often considered a gourmet or upscale dish, and it is typically served in fine dining restaurants or on special occasions. </p>
+                    <button className='btn border-2 mb-4 bg-transparent hover:bg-red-700 hover:border-red-700 text-black hover:text-white'>Order Now</button>
+                </div>
+            </div>
+
+            <div className="my-container">
+                
             </div>
         </>
     );
