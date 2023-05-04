@@ -33,6 +33,7 @@ const Registration = () => {
                 }).catch((error) => {
                     return toast.error({ error })
                 });
+                // logout after registration
                 logout()
             })
             .catch(error => {
