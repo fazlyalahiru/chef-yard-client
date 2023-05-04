@@ -17,13 +17,13 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/details')
+                loader: () => fetch('https://chef-yard-server-fazlyalahiru.vercel.app/details')
 
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoutes><ChefDetails></ChefDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+                loader: ({ params }) => fetch(`https://chef-yard-server-fazlyalahiru.vercel.app/details/${params.id}`)
             },
             {
                 path: '/login',
