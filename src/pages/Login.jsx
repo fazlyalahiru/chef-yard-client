@@ -1,13 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link,useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
+    const formRef = useRef(null);
     const { signIn, singnInWithGoogle, signInGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [error, setError] = useState("")
+
+
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     console.log(from);
@@ -17,43 +22,51 @@ const Login = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+                formRef.current.reset();
+                return toast.success('login successful')
+            })
+            .catch(error => {
+                setError(error.message)
             })
     }
     const handleloginWithGoogle = () => {
         singnInWithGoogle()
             .then((result) => {
                 console.log(result);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
+                return toast.success('login successful')
             })
             .catch(error => {
                 console.log(error);
             })
     }
 
-    const handleloginWithGithub = () =>{
+    const handleloginWithGithub = () => {
         signInGithub()
-        .then((result) => {
-            console.log(result);
-            navigate(from, {replace: true})
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then((result) => {
+                console.log(result);
+                navigate(from, { replace: true })
+                setError("")
+                return toast.success('login successful')
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 
     return (
         <div className=' grid grid-cols-3'>
             <div></div>
-            <div className=' py-6 rounded-md my-4 shadow-lg border bg-gray-100'>
+            <div className=' py-6 rounded-md my-4 shadow-lg border '>
                 <div className='mx-auto my-container  flex-col items-center gap-2 px-6'>
-                    <form className='grid gap-3'>
+                    <form ref={formRef} className='grid gap-3'>
 
                         <h4 className='text-2xl text-center font-semibold'>Please login</h4>
-
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' placeholder="Your email" className="input input-bordered w-full block" />
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" name='password' placeholder="Enter password" className="input input-bordered w-full block" />
+                        <p className='text-red-700'>{error}</p>
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' placeholder="Email" className="input input-bordered w-full block" />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" name='password' placeholder="Password" className="input input-bordered w-full block" />
                         <button onClick={handleSignIn} className="shadow bg-black hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="button">
                             Sign In
                         </button>

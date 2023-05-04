@@ -23,12 +23,12 @@ const Header = () => {
       })
   }
   return (
-    <div className='bg-gray-100 px-4 py-5 mx-auto md:px-24 lg:px-10 border z-10	'>
+    <div className=' px-4 py-5 mx-auto md:px-24 lg:px-10 border z-10	'>
 
       <div className='relative flex items-center justify-between my-container'>
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>
-          <FaCookieBite className='h-6 w-6 text-indigo-500' />
+          <FaCookieBite className='h-6 w-6 text-red-700' />
           <span className='ml-2  text-xl md:text-2xl font-bold text-gray-800 uppercase'>
             Chef yard
           </span>
@@ -39,35 +39,20 @@ const Header = () => {
           <li>
             <NavLink
               to='/'
-              className={({ isActive }) => (isActive ? 'text-indigo-500' : 'text-black')}
+              className={({ isActive }) => (isActive ? 'text-red-700' : 'text-black')}
             >
               Home
             </NavLink>
           </li>
           <li>
             <NavLink
-              to='/statistics'
-              className={({ isActive }) => (isActive ? 'text-blue-700' : 'text-black')}
-            >
-              Statistics
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to='/appliedjobs'
-              className={({ isActive }) => (isActive ? 'text-blue-700' : 'text-black')}
-            >
-              Applied Jobs
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to='/blog'
-              className={({ isActive }) => (isActive ? 'text-blue-700' : 'text-black')}
+              className={({ isActive }) => (isActive ? 'text-red-700' : 'text-black')}
             >
               Blog
             </NavLink>
           </li>
+      
         </ul>
         <div className='flex gap-1'>
         
@@ -101,7 +86,7 @@ const Header = () => {
                 <div className='flex items-center justify-between mb-4'>
                   <div className='z-10'>
                     <Link to='/' className='inline-flex items-center'>
-                      <BriefcaseIcon className='h-6 w-6 text-blue-700' />
+                      <BriefcaseIcon className='h-6 w-6 text-red-700' />
                       <span className='ml-2 text-xl font-bold  text-gray-800 uppercase'>
                         Chef Yard
                       </span>
@@ -127,21 +112,7 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <Link to='/statistics'>
-                        Statistics
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to='/appliedjobs'
-                      >
-                        Applied Jobs
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to='/blog'
-                      >
+                      <Link to='/blog'>
                         Blog
                       </Link>
                     </li>

@@ -5,6 +5,7 @@ import ChefDetails from "../pages/ChefDetails";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import PrivateRoutes from "./PrivateRoutes";
+import Blog from "../pages/Blog";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             }, {
                 path: '/register',
                 element: <Registration></Registration>
+            },
+            {
+                path: '/blog', 
+                element: <Blog></Blog>
             }
         ]
     }
