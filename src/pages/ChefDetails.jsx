@@ -7,7 +7,7 @@ import LazyLoad from 'react-lazy-load';
 const ChefDetails = () => {
     const { id } = useParams();
     const ChefDetails = useLoaderData();
-    const { chef_name, img, likes, recipes, experierecipesnce, description } = ChefDetails;
+    const { chef_name, img, likes, recipes, experience, description } = ChefDetails;
     return (
         <>
             <div className='my-container md:flex items-center py-10 border shadow md:my-4 px-4 rounded'>
@@ -21,11 +21,11 @@ const ChefDetails = () => {
 
                     <div className='flex items-center gap-2'>
                         <FaRegChartBar></FaRegChartBar>
-                        <p> Years of experience: {experierecipesnce}</p>
+                        <p> Years of experience: {experience}</p>
                     </div>
                     <div className='flex items-center gap-2 py-1'>
                         <FaBirthdayCake></FaBirthdayCake>
-                        <p> Top Recipes: {recipes.length}</p>
+                        <p> No of Recipes: {recipes.length}</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <FaRegThumbsUp></FaRegThumbsUp>
