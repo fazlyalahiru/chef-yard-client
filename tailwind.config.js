@@ -6,28 +6,7 @@ export default {
   ],
   daisyui: {
     themes: [
-      {
-        mytheme: {
-        
-"primary": "#dc2626",
-        
-"secondary": "#222222",
-        
-"accent": "#baf49c",
-        
-"neutral": "#2F2631",
-        
-"base-100": "#FAF5FA",
-        
-"info": "#25A4DA",
-        
-"success": "#82E3C9",
-        
-"warning": "#C4930E",
-        
-"error": "#E92B37",
-        },
-      },
+      
     ],
   },
   plugins: [require("daisyui")],
