@@ -87,7 +87,7 @@ const Registration = () => {
                             Sign Up
                         </button>
                     </form>
-                    <p className='pr-2'>Already have an account?<Link to="/login" className='ms-2 text-red-700 hover:text-black' >Login</Link></p>
+                    <p className='pr-2 pt-3'>Already have an account?<Link to="/login" className='ms-2 text-red-700 hover:text-black' >Login</Link></p>
                     <div>
                         <h4 className='mt-4 font-semibold text-center'>- or sign up with -</h4>
                         <div className='flex gap-4 py-2 w-full justify-center'>
