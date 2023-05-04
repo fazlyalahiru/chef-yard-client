@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
 import { getAuth, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
@@ -9,13 +9,13 @@ const auth = getAuth(app)
 
 const Registration = () => {
     const formRef = useRef(null);
-    const { createUser, singnInWithGoogle, signInGithub } = useContext(AuthContext)
+    const { createUser, singnInWithGoogle, signInGithub, logout } = useContext(AuthContext)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [photo, setPhoto] = useState("")
     const [error, setError] = useState("")
-    
+
 
 
     const handleRegister = event => {
@@ -29,12 +29,11 @@ const Registration = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {
-                    // window.location.reload()
-                    return toast.success('User created successfully');
+                    return toast.success('User created. Login to continue');
                 }).catch((error) => {
                     return toast.error({ error })
                 });
-
+                logout()
             })
             .catch(error => {
                 console.log(error);
