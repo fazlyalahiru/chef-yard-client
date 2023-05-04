@@ -1,13 +1,20 @@
 import React from 'react';
+import PDFFile from '../components/PDFFile';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const Blog = () => {
     return (
         <div>
-            <div className=' py-6 md:py-20  px-4 bg-gray-100'>
-                <div className='my-container'>
-                    <h1 className='text-center text-2xl md:text-4xl font-bold text-black'>Blog</h1>
 
+
+            <div className=' py-6 md:py-20  px-4 bg-gray-100'>
+                <div className='my-container text-center'>
+                    <h1 className='text-center text-2xl md:text-4xl font-bold text-black mb-4'>Blog</h1>
+                    <PDFDownloadLink document={<PDFFile />} filename="FORM">
+                        {({ loading }) => (loading ? <p>Loading Document...</p> : <button className='btn border-1 mb-4 bg-transparent hover:bg-red-700 hover:border-red-700 text-black hover:text-white' >Download PDF</button>)}
+                    </PDFDownloadLink>
                 </div>
+
 
             </div>
 
@@ -27,7 +34,7 @@ const Blog = () => {
 
                     </div>
                     <div className='shadow-md p-5 rounded'>
-                        <h3 className='text-red-700 text-xl font-semibold  py-2'>How to validate React props using PropTypes</h3>
+                        <h3 className='text-red-700 text-xl font-semibold  py-2'>How to validate React props using PropTypes?</h3>
                         <p>PropTypes is a build feature in React that allows the developers to define the types of props passed to a React component.</p>
                         <p className='pt-2'>React provides some validators to validate the props type when passing
                             <li>PropTypes.any</li>
