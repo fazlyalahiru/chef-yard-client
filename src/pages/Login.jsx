@@ -4,7 +4,7 @@ import { Link,useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, singnInWithGoogle, signInGithub } = useContext(AuthContext);
     const navigate = useNavigate();
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
@@ -20,6 +20,28 @@ const Login = () => {
                 navigate(from, {replace: true})
             })
     }
+    const handleloginWithGoogle = () => {
+        singnInWithGoogle()
+            .then((result) => {
+                console.log(result);
+                navigate(from, {replace: true})
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleloginWithGithub = () =>{
+        signInGithub()
+        .then((result) => {
+            console.log(result);
+            navigate(from, {replace: true})
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
 
     return (
         <div className=' grid grid-cols-3'>
@@ -40,11 +62,11 @@ const Login = () => {
                     <div>
                         <h4 className='mt-4 font-semibold text-center'>- or login with -</h4>
                         <div className='flex gap-4 py-2 w-full justify-center'>
-                            <div className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer'>
+                            <div onClick={handleloginWithGoogle} className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer'>
                                 <FaGoogle />
                                 <button> Google</button>
                             </div>
-                            <div className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-black hover:text-white cursor-pointer'>
+                            <div onClick={handleloginWithGithub} className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-black hover:text-white cursor-pointer'>
                                 <FaGithub></FaGithub>
                                 <button >  Github</button>
                             </div>

@@ -7,7 +7,7 @@ import app from '../firebase/firebase.config';
 const auth = getAuth(app)
 
 const Registration = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, singnInWithGoogle, signInGithub } = useContext(AuthContext)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -42,6 +42,26 @@ const Registration = () => {
             })
     }
 
+    const handleRegisterWithGoogle = () => {
+        singnInWithGoogle()
+            .then((result) => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleRegistrationWithGithub = () =>{
+        signInGithub()
+        .then((result) => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <div className=' grid grid-cols-3'>
             <div></div>
@@ -62,11 +82,11 @@ const Registration = () => {
                     <div>
                         <h4 className='mt-4 font-semibold text-center'>- or sign up with -</h4>
                         <div className='flex gap-4 py-2 w-full justify-center'>
-                            <div className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer'>
+                            <div onClick={handleRegisterWithGoogle} className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer'>
                                 <FaGoogle />
                                 <button> Google</button>
                             </div>
-                            <div className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-black hover:text-white cursor-pointer'>
+                            <div onClick={handleRegistrationWithGithub} className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-black hover:text-white cursor-pointer'>
                                 <FaGithub></FaGithub>
                                 <button >  Github</button>
                             </div>
