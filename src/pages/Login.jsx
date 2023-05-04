@@ -57,9 +57,9 @@ const Login = () => {
 
 
     return (
-        <div className=' grid grid-cols-3'>
+        <div className=' grid md:grid-cols-3'>
             <div></div>
-            <div className=' py-6 rounded-md my-4 shadow-lg border '>
+            <div className=' py-6 rounded-md my-6 shadow-lg border mx-4 md:mx-1'>
                 <div className='mx-auto my-container  flex-col items-center gap-2 px-6'>
                     <form ref={formRef} className='grid gap-3'>
 

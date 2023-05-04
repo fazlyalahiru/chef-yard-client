@@ -32,7 +32,7 @@ const Header = () => {
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>
           <FaCookieBite className='h-6 w-6 text-red-700' />
-          <span className='ml-2  text-xl md:text-2xl font-bold text-gray-800 uppercase'>
+          <span className='ml-2  text-base md:text-2xl font-bold text-gray-800 uppercase'>
             Chef yard
           </span>
         </Link>
@@ -67,7 +67,7 @@ const Header = () => {
           }
 
           {
-            user ? <button onClick={handleLogOut} className='bg-red-700 text-white px-6 py-1 rounded'>Logout</button> : <Link to="/login">
+            user ? <button onClick={handleLogOut} className='bg-red-700 text-white px-2 md:px-6 py-1 rounded'>Logout</button> : <Link to="/login">
               <button className='bg-red-700 text-white px-6 py-1 rounded'>Login</button>
             </Link>
           }
@@ -89,8 +89,8 @@ const Header = () => {
                 <div className='flex items-center justify-between mb-4'>
                   <div className='z-10'>
                     <Link to='/' className='inline-flex items-center'>
-                      <BriefcaseIcon className='h-6 w-6 text-red-700' />
-                      <span className='ml-2 text-xl font-bold  text-gray-800 uppercase'>
+                    <FaCookieBite className='h-6 w-6 text-red-700' />
+                      <span className='ml-2 text-base font-bold  text-gray-800 uppercase'>
                         Chef Yard
                       </span>
                     </Link>

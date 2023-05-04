@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleRight, FaRegThumbsUp } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 
 const ChefCard = ({ chef }) => {
     const { id, chef_name, img, experience, recipes, likes } = chef;
@@ -8,7 +9,9 @@ const ChefCard = ({ chef }) => {
     return (
         <div>
             <div className='shadow pt-4 rounded-lg'>
+                <LazyLoad  threshold={0.99}>
                 <img src={img} className='rounded w-5/6 m-auto' />
+                </LazyLoad>
                 <div className='py-6'>
                     <div className='text-center'>
                         <h2 className="text-center text-2xl font-semibold">{chef_name}</h2>
