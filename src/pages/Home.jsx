@@ -22,7 +22,7 @@ const Home = () => {
 
                 <h1 className='text-white text-3xl md:text-7xl uppercase font-bold'>Chef on the go</h1>
                 <p className='text-white text-center md:text-xl py-4 '>Discover the world of French cuisine by exploring details about renowned French chefs</p>
-                <button className='btn border-2 border-white bg-transparent hover:bg-red-700 hover:border-red-700 text-white'>Explor Now</button>
+                <button className='btn border-2 border-white bg-transparent hover:bg-red-700 hover:border-red-700 text-white'>Explore Now</button>
 
             </div>
             {/* Chef Card Section */}

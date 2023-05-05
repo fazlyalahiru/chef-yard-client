@@ -7,7 +7,7 @@ const Footer = () => {
             <div className=' grid md:grid-cols-5 py-10 my-container  text-gray-300 border-b border-gray-800 '>
                 <div className='px-5 md:px-3 pt-4'>
                     <h1 className='text-xl md:text-2xl font-bold  uppercase'>Chef Yard</h1>
-                    <p className='py-2'>Chef Yard is a worldwide brand that provides top-quality chefs for restaurants and professional kitchens. We also offer a food delivery service for your convenience.</p>
+                    <p className='py-2'>Chef Yard is a worldwide brand that provides top-quality chefs for restaurants and professional kitchens.</p>
                 </div>
                 <div className='px-5 md:px-3 pt-4'>
                     <h1 className='font-bold uppercase'>Company</h1>

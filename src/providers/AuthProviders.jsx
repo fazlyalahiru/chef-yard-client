@@ -20,13 +20,13 @@ const AuthProviders = ({ children }) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-const singnInWithGoogle = () =>{
-    return signInWithPopup(auth, googleAuthProvider)
-}
+    const singnInWithGoogle = () => {
+        return signInWithPopup(auth, googleAuthProvider)
+    }
 
-const signInGithub = () =>{
-    return signInWithPopup(auth, githubAuthProvider)
-}
+    const signInGithub = () => {
+        return signInWithPopup(auth, githubAuthProvider)
+    }
     const logout = () => {
         setLoading(true)
         signOut(auth)
@@ -40,7 +40,7 @@ const signInGithub = () =>{
         return () => {
             unsubscribe()
         }
-    }, [])
+    }, [loading])
 
 
 
@@ -51,8 +51,9 @@ const signInGithub = () =>{
         signIn,
         singnInWithGoogle,
         signInGithub,
-        logout
-        
+        logout,
+        setLoading
+
     }
     return (
         <div>

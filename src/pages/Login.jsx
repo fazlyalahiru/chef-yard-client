@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle, FaTimes } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
 import { toast } from 'react-hot-toast';
@@ -55,6 +55,10 @@ const Login = () => {
             })
     }
 
+    const handleError = () => {
+        setError(null)
+    }
+
 
     return (
         <div className=' grid md:grid-cols-3'>
@@ -64,16 +68,21 @@ const Login = () => {
                     <form ref={formRef} className='grid gap-3'>
 
                         <h4 className='text-2xl text-center font-semibold'>Please login</h4>
-                        <p className='text-red-700'>{error}</p>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' placeholder="Email" className="input input-bordered w-full block" />
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" name='password' placeholder="Password" className="input input-bordered w-full block" />
+                        {
+                            error && <div className='flex w-full bg-red-700 items-center justify-between md:px-6 px-2 text-sm md:text-base rounded'>
+                                <p  className=' text-white  py-2 rounded'>{error}</p>
+                                <FaTimes className='text-white cursor-pointer' onClick={handleError}></FaTimes>
+                            </div>
+                        }
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" name='email' placeholder="Email" className="input border border-gray-300 w-full block" />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" name='password' placeholder="Password" className="input border border-gray-300 w-full block" />
                         <button onClick={handleSignIn} className="shadow bg-black hover:bg-red-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="button">
                             Sign In
                         </button>
                         <p>Don't have account?<Link className='ms-2 text-red-700 hover:text-black' to="/register">Register</Link></p>
                     </form>
                     <div>
-                        <h4 className='mt-4 font-semibold text-center'>- or login with -</h4>
+                        <h4 className='mt-4 font-semibold text-center'>- or -</h4>
                         <div className='flex gap-4 py-2 w-full justify-center'>
                             <div onClick={handleloginWithGoogle} className='flex items-center gap-2 border rounded px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer'>
                                 <FaGoogle />
